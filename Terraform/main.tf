@@ -9,3 +9,10 @@ module "ecr" {
   source  = "./modules/ecr"
   env     = "dev"
 }
+
+## VPC
+module "dg-vpc" {
+  source  = "./modules/vpc"
+  env     = "dev"
+}
+  
