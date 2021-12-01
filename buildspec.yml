@@ -8,7 +8,7 @@ env:
 phases:
   pre_build:
     commands:
-      - $(aws ecr get-login --region $AWS_DEFAULT_REGION)
+      - $(aws ecr get-login --region eu-west-3)
   build:
     commands:
       - cd packages/server && docker build -f Dockerfile -t $IMAGE_REPO_NAME:latest .
