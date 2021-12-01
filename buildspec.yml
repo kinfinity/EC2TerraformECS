@@ -1,0 +1,16 @@
+version: 0.2
+
+env:
+  variables:
+    IMAGE_REPO_NAME: "dev/node-server"
+    IMAGE_TAG: "latest"
+
+phases:
+  pre_build:
+    commands:
+      - $(aws ecr get-login --region $AWS_DEFAULT_REGION)
+  build:
+    commands:
+      - cd packages/server && docker build -f Dockerfile -t $IMAGE_REPO_NAME:latest .
+      - cd packages/server && docker tag $IMAGE_REPO_NAME:$IMAGE_TAG $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$IMAGE_TAG
+      - cd packages/server && docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$IMAGE_TAG
