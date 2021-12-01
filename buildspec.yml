@@ -4,7 +4,7 @@ env:
   variables:
     IMAGE_REPO_NAME: "dev/node-server" 
     IMAGE_TAG: "latest"
-    $REGION: "eu-west-3"
+    REGION: "eu-west-3"
 
 phases:
   pre_build:
