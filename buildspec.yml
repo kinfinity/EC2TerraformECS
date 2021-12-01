@@ -9,7 +9,7 @@ env:
 phases:
   pre_build:
     commands:
-      - $(aws ecr get-login --region $REGION)
+      - $(aws ecr get-login --region $REGION --no-include-email)
   build:
     commands:
       - cd packages/server && docker build -f Dockerfile -t $IMAGE_REPO_NAME:latest .
